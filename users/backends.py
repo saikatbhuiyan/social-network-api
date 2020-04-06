@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 from rest_framework import authentication, exceptions
-from core.models import User
+from .models import User
 
 class JWTAuthentication(authentication.BaseAuthentication):
 
@@ -75,7 +75,7 @@ class JWTAuthentication(authentication.BaseAuthentication):
     except User.DoesNotExist:
       msg = 'No user matching this token was found.'
     raise exceptions.AuthenticationFailed(msg)
-  
+
     if not user.is_active:
       msg = 'This user has been deactivated.'
       raise exceptions.AuthenticationFailed(msg)
