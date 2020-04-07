@@ -3,7 +3,8 @@ from django.apps import AppConfig
 class AuthenticationAppConfig(AppConfig):
   name = 'users'
   label = 'users'
-  verbose_name = 'Authentication'
+  verbose_name = 'Users'
+  
   def ready(self):
     import users.signals
 # This is how we register our custom app config with Django. Django is smart

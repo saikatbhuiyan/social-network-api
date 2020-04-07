@@ -48,13 +48,13 @@ class LoginSerializer(serializers.Serializer):
     # email is not provided.
     if email is None:
       raise serializers.ValidationError(
-      'An email address is required to log in.'
+        'An email address is required to log in.'
       )
     # Raise an exception if a
     # password is not provided.
     if password is None:
       raise serializers.ValidationError(
-      'A password is required to log in.'
+        'A password is required to log in.'
       )
     # The `authenticate` method is provided by Django and handles checking
     # for a user that matches this email/password combination. Notice how
@@ -65,7 +65,7 @@ class LoginSerializer(serializers.Serializer):
     # `authenticate` will return `None`. Raise an exception in this case.
     if user is None:
       raise serializers.ValidationError(
-      'A user with this email and password was not found.'
+        'A user with this email and password was not found.'
       )
     # Django provides a flag on our `User` model called `is_active`. The
     # purpose of this flag is to tell us whether the user has been banned
@@ -73,15 +73,15 @@ class LoginSerializer(serializers.Serializer):
     # it is worth checking. Raise an exception in this case.
     if not user.is_active:
       raise serializers.ValidationError(
-      'This user has been deactivated.'
+        'This user has been deactivated.'
       )
     # The `validate` method should return a dictionary of validated data.
     # This is the data that is passed to the `create` and `update` methods
     # that we will see later on.
     return {
-    'email': user.email,
-    'username': user.username,
-    'token': user.token
+      'email': user.email,
+      'username': user.username,
+      'token': user.token
     }
 
 
@@ -147,7 +147,7 @@ class UserSerializer(serializers.ModelSerializer):
       setattr(instance.profile, key, value)
       # Save the profile just like we saved the user.
       instance.profile.save()
-      
+
     return instance
 
     # for (key, value) in validated_data.items():
